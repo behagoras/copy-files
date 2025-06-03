@@ -1,76 +1,191 @@
-## copy-files
+# 📁 dir-to-md
 
-A simple TypeScript package that copies files and folders while respecting `.gitignore` rules.
+> Convert your project directories into Markdown with a single command — clipboard-ready, file-exportable, and fully customizable with `.gitignore`-like rules.
 
-### Installation
+------
 
-```bash
-npm install copy-files
-```
+## 📦 Installation
 
-### Global Installation with npm pack
-
-To install the package globally and use it as a command-line tool:
-
-1. Navigate to the project directory:
-
-   ```bash
-   cd /path/to/copy-files
-   ```
-
-2. Build the project:
-
-   ```bash
-   npm run build
-   ```
-
-3. Create a tarball using npm pack:
-
-   ```bash
-   npm pack
-   ```
-
-   This will generate a file like `copy-files-1.0.0.tgz`.
-
-4. Install the package globally:
-
-   ```bash
-   npm install -g ./copy-files-1.0.0.tgz
-   ```
-
-### Usage
-
-Once installed globally, you can use the command in any directory:
+### Local Project Use
 
 ```bash
-copy-files
+npm install dir-to-md
 ```
 
-This will:
+### Global CLI Use
 
-- Copy all files and folders from the current directory to a new folder named `copied`.
-- Ignore files and folders specified in `.gitignore`.
-- Generate a Markdown file `output.md` containing the contents of copied files.
+```bash
+npm install -g dir-to-md
+```
 
-### Development and Contribution
+### Development Installation
 
-To contribute to this project:
+```bash
+git clone https://github.com/your-username/dir-to-md.git
+cd dir-to-md
+npm install
+npm run build
+npm pack
+npm install -g ./dir-to-md-*.tgz
+```
 
-1. Clone the repository:
+------
 
-   ```bash
-   git clone https://github.com/your-username/copy-files.git
-   ```
+## 🚀 Usage
 
-2. Install dependencies:
+### ✨ Default Mode (Clipboard)
 
-   ```bash
-   npm install
-   ```
+```bash
+dir-to-md
+```
 
-3. Run the project locally:
+Copies all non-ignored files from the current directory to your clipboard as a Markdown snippet.
 
-   ```bash
-   npm start
-   ```
+------
 
+### 🧩 Commands
+
+#### 🔹 `copy`
+
+Copy directory contents to **clipboard**:
+
+```bash
+dir-to-md copy
+```
+
+With custom ignore patterns:
+
+```bash
+dir-to-md copy --ignore "*.tmp" "temp/**"
+```
+
+------
+
+#### 🔹 `directory`
+
+Export to a **Markdown file** (default: `output.md`):
+
+```bash
+dir-to-md directory
+```
+
+With custom path:
+
+```bash
+dir-to-md directory --path notes.md
+```
+
+With custom ignores:
+
+```bash
+dir-to-md directory --path notes.md --ignore "*.log" "node_modules/"
+```
+
+------
+
+#### 🔹 `ignore`
+
+Manage persistent ignore rules stored in `ignore.json`.
+
+Show current ignore patterns:
+
+```bash
+dir-to-md ignore --show
+```
+
+Add new patterns:
+
+```bash
+dir-to-md ignore --add "*.log" "dist/**"
+```
+
+Include specific files (override ignore):
+
+```bash
+dir-to-md ignore --add '!important.log'
+```
+
+Remove patterns:
+
+```bash
+dir-to-md ignore --remove "*.log"
+```
+
+> 💡 Tip: Wrap include patterns (those starting with `!`) in quotes to avoid shell issues.
+
+------
+
+### 🧰 Global Options
+
+You can use `--ignore` with any command to apply **temporary** ignore rules:
+
+```bash
+dir-to-md directory --ignore "*.test.js" "coverage/**"
+```
+
+------
+
+## 🎯 Ignore System Explained
+
+This tool supports layered ignoring with the following priority:
+
+1. **`.gitignore`** — automatically respected if found
+2. **`ignore.json`** — persisted rules, editable via CLI
+3. **`--ignore` CLI flag** — per-command override
+
+### ✔ Supported Syntax
+
+- Wildcards: `*.log`, `**/temp/*`, `?ile.txt`
+- Negation: `!keep.md` to include ignored files
+- Directory match: `node_modules/`, `dist/**`, `.git/`
+
+------
+
+## ✍️ Markdown Output Format
+
+Each file is formatted as a Markdown snippet:
+
+````md
+# src/index.ts
+
+\```ts
+console.log('Hello World');
+\```
+
+# README.md
+
+```md
+# Project Title
+```
+---
+
+## 🛠 Development
+
+### 🔧 Available Scripts
+
+```bash
+npm run build    # Compile TypeScript
+npm start        # Run built CLI locally
+npm pack         # Bundle the CLI for distribution
+```
+````
+
+------
+
+## 🤝 Contributing
+
+We welcome contributions!
+
+1. Fork this repo
+2. Create a new branch
+3. Make your changes and commit
+4. Open a pull request
+
+> Bonus points for tests and useful examples 🙌
+
+------
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+ See the [LICENSE](https://github.com/behagoras/dir-to-md/blob/main/LICENSE) file for full details.
