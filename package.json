@@ -1,6 +1,6 @@
 {
   "name": "copy-files",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "dist/index.js",
   "bin": {
     "copy-files": "dist/index.js"
@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "commander": "^14.0.0",
     "fs-extra": "^11.3.0",
     "ignore": "^7.0.3"
   },
