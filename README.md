@@ -1,14 +1,14 @@
-# copy-files
+## copy-files
 
 A simple TypeScript package that copies files and folders while respecting `.gitignore` rules.
 
-## Installation
+### Installation
 
 ```bash
 npm install copy-files
 ```
 
-## Global Installation with npm pack
+### Global Installation with npm pack
 
 To install the package globally and use it as a command-line tool:
 
@@ -38,7 +38,7 @@ To install the package globally and use it as a command-line tool:
    npm install -g ./copy-files-1.0.0.tgz
    ```
 
-## Usage
+### Usage
 
 Once installed globally, you can use the command in any directory:
 
@@ -52,7 +52,7 @@ This will:
 - Ignore files and folders specified in `.gitignore`.
 - Generate a Markdown file `output.md` containing the contents of copied files.
 
-## Development and Contribution
+### Development and Contribution
 
 To contribute to this project:
 

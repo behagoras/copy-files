@@ -136,3 +136,9 @@ dist
 .pnp.*
 
 output.md
+
+# Local copy-files config
+ignore.json
+include.json
+.cursor/
+.DS_Store
