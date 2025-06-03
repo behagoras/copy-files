@@ -1,9 +1,9 @@
-// Re-export all functions from their individual files
-export { processDirectory } from './processDirectory';
-export { generateMarkdown } from './generateMarkdown';
-export { copyToClipboard } from './copyToClipboard';
-export { writeToFile } from './writeToFile';
-export { updateIgnore } from './updateIgnore';
+// Re-export directories
+export * from './ignore';
 
-// Re-export config functions
-export * from './config'; 
+// Re-export files
+export { copyToClipboard } from './copyToClipboard';
+export { generateMarkdown } from './generateMarkdown';
+export { processDirectory } from './processDirectory';
+export { updateIgnore } from './ignore/updateIgnore';
+export { writeToFile } from './writeToFile';

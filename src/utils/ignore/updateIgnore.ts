@@ -4,7 +4,7 @@ import {
   getIgnorePatterns,
   addIgnorePattern,
   removeIgnorePattern
-} from './config';
+} from './ignoreUtils';
 
 // Function for ignore pattern management with persistent storage
 export async function updateIgnore(add: string[] = [], remove: string[] = [], show: boolean = false): Promise<void> {
