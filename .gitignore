@@ -137,7 +137,7 @@ dist
 
 output.md
 
-# Local copy-files config
+# Local dir-to-md config
 ignore.json
 include.json
 .cursor/

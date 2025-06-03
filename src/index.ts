@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * copy-files
+ * dir-to-md
  * ----------------------
  * Commander-based CLI tool for copying files to clipboard or file
  */
@@ -13,7 +13,7 @@ import packageJson from '../package.json';
 const program = new Command();
 
 program
-  .name('copy-files')
+  .name('dir-to-md')
   .description('Copy files from the current directory to clipboard or file')
   .version(packageJson.version)
   .option('--ignore <pattern...>', 'Ignore patterns (repeatable)', []);
