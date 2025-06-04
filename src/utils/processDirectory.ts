@@ -5,7 +5,11 @@ import * as path from 'path';
 // Recursive function to process directories and build markdown content
 export async function processDirectory(dir: string, ig: ignore.Ignore, markdownContent: string, currentDir: string): Promise<string> {
   // First check if the current directory itself should be ignored
-  const currentRelativePath = path.relative(currentDir, dir);
+  // Normalize to POSIX-style paths for ignore matching
+  const currentRelativePath = path
+    .relative(currentDir, dir)
+    .split(path.sep)
+    .join('/');
   if (currentRelativePath && (ig.ignores(currentRelativePath) || ig.ignores(currentRelativePath + '/'))) {
     return markdownContent; // Skip this entire directory
   }
@@ -14,7 +18,10 @@ export async function processDirectory(dir: string, ig: ignore.Ignore, markdownC
 
   for (const item of items) {
     const fullPath = path.join(dir, item.name);
-    const relativePath = path.relative(currentDir, fullPath);
+    const relativePath = path
+      .relative(currentDir, fullPath)
+      .split(path.sep)
+      .join('/');
 
     // Check if this item should be ignored
     const shouldIgnore = ig.ignores(relativePath) ||
